@@ -1,726 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXE | Fragrance Collection</title>
 
-  <title>LUXE | Product Price List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <meta name="theme-color" content="#111111">
-  <meta name="description" content="LUXE Perfume product catalogue and price list.">
+<style>
+:root {
+  --black: #11110f;
+  --dark: #1c1b18;
+  --gold: #c8a96b;
+  --gold-light: #e5d2a6;
+  --cream: #f6f2e9;
+  --white: #fffdf8;
+  --muted: #89857d;
+  --border: #e8e1d4;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-      padding: 25px 15px;
-    }
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: 'DM Sans', sans-serif;
+}
 
-    .container {
-      max-width: 1050px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.06);
-    }
+/* HERO */
 
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.hero {
+  background:
+    radial-gradient(ellipse at 80% 20%, #393329 0%, transparent 45%),
+    linear-gradient(120deg, #11110f, #26231e);
+  color: var(--white);
+  padding: 55px 20px 65px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
 
-    .brand {
-      font-size: 38px;
-      letter-spacing: 9px;
-      font-weight: 700;
-    }
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(200,169,107,.2);
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  pointer-events: none;
+}
 
-    .tagline {
-      margin-top: 7px;
-      color: #888;
-      font-size: 12px;
-      letter-spacing: 2px;
-    }
+.hero::before {
+  left: -220px;
+  top: -180px;
+}
 
-    .heading {
-      margin-top: 25px;
-      font-size: 21px;
-      letter-spacing: 1px;
-    }
+.hero::after {
+  right: -220px;
+  bottom: -220px;
+}
 
-    .toolbar {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 65px;
+  font-weight: 600;
+  letter-spacing: 15px;
+  color: var(--gold-light);
+}
 
-    .search-box {
-      flex: 1;
-      min-width: 200px;
-      padding: 13px 15px;
-      border: 1px solid #ddd;
-      border-radius: 7px;
-      outline: none;
-      font-size: 14px;
-    }
+.hero-line {
+  width: 65px;
+  height: 1px;
+  background: var(--gold);
+  margin: 12px auto;
+}
 
-    .search-box:focus {
-      border-color: #222;
-    }
+.tagline {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #c9c2b4;
+  text-transform: uppercase;
+}
 
-    button {
-      padding: 12px 20px;
-      background: #171717;
-      color: white;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-      font-size: 13px;
-    }
+.hero h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 35px;
+  font-weight: 400;
+  margin-top: 35px;
+  color: var(--white);
+}
 
-    button:hover {
-      background: #444;
-    }
+.hero-subtitle {
+  font-size: 12px;
+  color: #aaa397;
+  margin-top: 8px;
+}
 
-    button:disabled {
-      opacity: .5;
-      cursor: not-allowed;
-    }
+/* MAIN */
 
-    .summary {
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-      font-size: 14px;
-      color: #666;
-    }
+.container {
+  max-width: 1150px;
+  margin: -25px auto 0;
+  position: relative;
+  padding: 0 20px 50px;
+}
 
-    .summary strong {
-      color: #111;
-    }
+/* SUMMARY */
 
-    .status {
-      margin: 12px 0;
-      font-size: 13px;
-      color: #777;
-      min-height: 18px;
-    }
+.summary {
+  background: var(--white);
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.05);
+  margin-bottom: 35px;
+}
 
-    .status.error {
-      color: #c0392b;
-    }
+.stat {
+  text-align: center;
+  padding: 22px 10px;
+  border-right: 1px solid var(--border);
+}
 
-    .status.success {
-      color: #16834b;
-    }
+.stat:last-child {
+  border: none;
+}
 
-    .table-wrapper {
-      width: 100%;
-      overflow-x: auto;
-      border-radius: 7px;
-    }
+.stat strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  color: #a38348;
+}
 
-    table {
-      width: 100%;
-      min-width: 550px;
-      border-collapse: collapse;
-    }
+.stat span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
 
-    thead {
-      background: #171717;
-      color: white;
-    }
+/* FILTERS */
 
-    th {
-      padding: 15px;
-      text-align: left;
-      font-size: 13px;
-      font-weight: 600;
-    }
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 20px;
+  gap: 15px;
+}
 
-    td {
-      padding: 14px 15px;
-      border-bottom: 1px solid #eee;
-      font-size: 14px;
-    }
+.section-heading h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 600;
+}
 
-    tbody tr:hover {
-      background: #fafafa;
-    }
+.section-heading p {
+  font-size: 12px;
+  color: var(--muted);
+}
 
-    .price {
-      font-weight: 700;
-      color: #16834b;
-      white-space: nowrap;
-    }
+.filters {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 17px;
+  margin-bottom: 25px;
+}
 
-    .empty {
-      padding: 35px;
-      text-align: center;
-      color: #888;
-    }
+.search-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
-    footer {
-      margin-top: 30px;
-      text-align: center;
-      color: #999;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
+.search {
+  flex: 1;
+  min-width: 200px;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  outline: none;
+  font-family: inherit;
+}
 
-    @media (max-width: 600px) {
-      body {
-        padding: 12px 8px;
-      }
+.search:focus {
+  border-color: var(--gold);
+}
 
-      .container {
-        padding: 18px 12px;
-      }
+select, .action {
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: white;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
 
-      .brand {
-        font-size: 31px;
-      }
+.action {
+  background: var(--black);
+  color: var(--gold-light);
+  border-color: var(--black);
+}
 
-      .toolbar button {
-        flex: 1;
-      }
-    }
+.action:hover {
+  background: #393329;
+}
 
-    @media print {
-      body {
-        background: white;
-        padding: 0;
-      }
+/* PRODUCT GRID */
 
-      .container {
-        box-shadow: none;
-        padding: 10px;
-      }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
 
-      .toolbar,
-      .status {
-        display: none !important;
-      }
+.product-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 20px;
+  transition: .2s ease;
+}
 
-      table {
-        min-width: 100%;
-      }
+.product-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 22px rgba(0,0,0,.05);
+  transform: translateY(-2px);
+}
 
-      th {
-        background: #222 !important;
-        color: white !important;
-        print-color-adjust: exact;
-      }
-    }
-  </style>
+.product-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 17px;
+}
+
+.product-title h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.product-number {
+  color: #b6a98f;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.type-label {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8d6e3d;
+  background: #f2ead9;
+  padding: 5px 8px;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.price-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.price-item {
+  background: #f7f4ed;
+  border-radius: 5px;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.price-item span {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+.price-item strong {
+  font-size: 12px;
+  color: #8e6e3c;
+}
+
+.no-results {
+  grid-column: 1/-1;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--muted);
+  background: var(--white);
+  border-radius: 10px;
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--black);
+  color: var(--gold-light);
+  text-align: center;
+  padding: 35px 15px;
+}
+
+footer h2 {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 8px;
+  font-size: 30px;
+}
+
+footer p {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #a8a092;
+  margin-top: 8px;
+}
+
+@media(max-width: 700px) {
+  .hero {
+    padding: 42px 15px 55px;
+  }
+
+  .logo {
+    font-size: 52px;
+    letter-spacing: 11px;
+  }
+
+  .hero h2 {
+    font-size: 29px;
+  }
+
+  .container {
+    padding: 0 12px 35px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary .stat {
+    padding: 17px 5px;
+  }
+
+  .stat strong {
+    font-size: 25px;
+  }
+
+  .stat span {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .search-row > * {
+    width: 100%;
+  }
+
+  .section-heading h3 {
+    font-size: 27px;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .hero {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .filters {
+    display: none;
+  }
+
+  .container {
+    margin: 20px auto;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-card {
+    break-inside: avoid;
+  }
+
+  footer {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="container">
+<header class="hero">
+  <div class="logo">LUXE</div>
+  <div class="hero-line"></div>
+  <p class="tagline">Luxury captured in every drop</p>
+  <h2>The Fragrance Collection</h2>
+  <p class="hero-subtitle">Discover your signature impression.</p>
+</header>
 
-    <header>
-      <div class="brand">LUXE</div>
+<main class="container">
 
-      <p class="tagline">
-        LUXURY CAPTURED IN EVERY DROP
-      </p>
+  <section class="summary">
+    <div class="stat">
+      <strong id="productCount">0</strong>
+      <span>Fragrances</span>
+    </div>
+    <div class="stat">
+      <strong id="variantCount">0</strong>
+      <span>Price Options</span>
+    </div>
+    <div class="stat">
+      <strong>3.5–100</strong>
+      <span>Sizes (ml)</span>
+    </div>
+  </section>
 
-      <h2 class="heading">
-        PRODUCT PRICE LIST
-      </h2>
-    </header>
-
-    <section class="toolbar">
-
-      <input
-        type="search"
-        id="searchInput"
-        class="search-box"
-        placeholder="Search perfume name or size..."
-      >
-
-      <button id="refreshButton">
-        Refresh
-      </button>
-
-      <button id="printButton">
-        Print
-      </button>
-
-    </section>
-
-    <section class="summary">
-
+  <section>
+    <div class="section-heading">
       <div>
-        Total Products:
-        <strong id="productCount">0</strong>
+        <h3>Explore Our Collection</h3>
+        <p>Find the perfect fragrance for every occasion.</p>
       </div>
-
-      <div>
-        Total Variants:
-        <strong id="variantCount">0</strong>
-      </div>
-
-    </section>
-
-    <div id="status" class="status">
-      Connecting to LUXE server...
     </div>
 
-    <section class="table-wrapper">
+    <div class="filters">
+      <div class="search-row">
+        <input
+          class="search"
+          id="search"
+          type="search"
+          placeholder="Search your favourite fragrance..."
+        >
 
-      <table>
+        <select id="typeFilter">
+          <option value="all">All Types</option>
+          <option value="rollon">Roll-on</option>
+          <option value="spray">Spray</option>
+        </select>
 
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Product Name</th>
-            <th>Size</th>
-            <th>Price (BDT)</th>
-          </tr>
-        </thead>
+        <select id="sizeFilter">
+          <option value="all">All Sizes</option>
+          <option value="3.5">3.5 ml</option>
+          <option value="6">6 ml</option>
+          <option value="15">15 ml</option>
+          <option value="30">30 ml</option>
+          <option value="50">50 ml</option>
+          <option value="100">100 ml</option>
+        </select>
 
-        <tbody id="productTable">
+        <button class="action" onclick="window.print()">
+          Print Price List
+        </button>
+      </div>
+    </div>
 
-          <tr>
-            <td colspan="4" class="empty">
-              Loading products...
-            </td>
-          </tr>
+    <div id="productGrid" class="product-grid"></div>
+  </section>
 
-        </tbody>
+</main>
 
-      </table>
-
-    </section>
-
-    <footer>
-      LUXE PERFUME · WEAR THE IMPRESSION
-    </footer>
-
-  </main>
+<footer>
+  <h2>LUXE</h2>
+  <p>WEAR THE IMPRESSION</p>
+</footer>
 
 <script>
+/*
+  Add your supplied product data here.
 
-  // ==========================================
-  // API CONFIGURATION
-  // ==========================================
-
-  const API_BASE_URL =
-    "https://perfume-stock-management-system-ewa.vercel.app";
-
-  const PRODUCT_ENDPOINT = "/api/products";
-
-  // If your API requires authentication,
-  // add a valid token here.
-  const AUTH_TOKEN = "";
-
-  let allRows = [];
-
-  // ==========================================
-  // DOM ELEMENTS
-  // ==========================================
-
-  const productTable =
-    document.getElementById("productTable");
-
-  const statusElement =
-    document.getElementById("status");
-
-  const refreshButton =
-    document.getElementById("refreshButton");
-
-  // ==========================================
-  // FETCH PRODUCTS
-  // ==========================================
-
-  async function fetchProducts() {
-
-    const headers = {
-      "Accept": "application/json"
-    };
-
-    if (AUTH_TOKEN) {
-      headers.Authorization =
-        `Bearer ${AUTH_TOKEN}`;
+  Each product can have multiple sizes and prices.
+  Example:
+  {
+    name: "Dunhil desire",
+    type: "rollon",
+    prices: {
+      "3.5": 150,
+      "6": 250,
+      "15": 650,
+      "30": 1250
     }
-
-    const response = await fetch(
-      `${API_BASE_URL}${PRODUCT_ENDPOINT}`,
-      {
-        method: "GET",
-        headers,
-        cache: "no-store"
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(
-        `HTTP ${response.status}: ${response.statusText}`
-      );
-    }
-
-    return await response.json();
   }
+*/
 
-  // ==========================================
-  // EXTRACT PRODUCT ARRAY
-  // ==========================================
-
-  function extractProducts(result) {
-
-    if (Array.isArray(result)) {
-      return result;
-    }
-
-    const possibleArrays = [
-      result?.products,
-      result?.data?.products,
-      result?.data,
-      result?.results
-    ];
-
-    return possibleArrays.find(
-      Array.isArray
-    ) || null;
+const products = [
+  {
+    name: "Dunhil desire",
+    type: "rollon",
+    prices: {"3.5":150,"6":250,"15":650,"30":1250}
+  },
+  {
+    name: "Dunhil desire Spray",
+    type: "spray",
+    prices: {"6":300,"15":700,"30":1000,"50":1300,"100":1700}
+  },
+  {
+    name: "Versace EROS",
+    type: "rollon",
+    prices: {"3.5":150,"6":250,"15":650,"30":1250}
+  },
+  {
+    name: "Versace EROS Spray",
+    type: "spray",
+    prices: {"6":300,"15":700,"30":1000,"50":1300,"100":1700}
+  },
+  {
+    name: "Blue berry",
+    type: "rollon",
+    prices: {"3.5":150,"6":250,"15":650,"30":1250}
+  },
+  {
+    name: "Blue berry Spray",
+    type: "spray",
+    prices: {"6":300,"15":700,"30":1000,"50":1300,"100":1700}
+  },
+  {
+    name: "Vampire B.",
+    type: "rollon",
+    prices: {"3.5":200,"6":300,"15":800,"30":1650}
+  },
+  {
+    name: "Vampire B. Spray",
+    type: "spray",
+    prices: {"6":350,"15":850,"30":1500,"50":1900,"100":2200}
   }
-
-  // ==========================================
-  // EXTRACT SIZE VARIANTS
-  // ==========================================
-
-  function getVariants(product) {
-
-    const sizes = product.sizes;
-
-    if (Array.isArray(sizes)) {
-      return sizes;
-    }
-
-    if (
-      sizes &&
-      typeof sizes === "object"
-    ) {
-      return Object.entries(sizes).map(
-        ([size, value]) => ({
-          size,
-          ...(typeof value === "object" && value !== null
-            ? value
-            : { price: value })
-        })
-      );
-    }
-
-    return [];
-  }
-
-  // ==========================================
-  // NORMALIZE PRODUCT DATA
-  // ==========================================
-
-  function normalizeProducts(products) {
-
-    const rows = [];
-
-    products.forEach(product => {
-
-      const name =
-        product.name ||
-        product.productName ||
-        product.title ||
-        "Unnamed Product";
-
-      const variants = getVariants(product);
-
-      if (variants.length > 0) {
-
-        variants.forEach(variant => {
-
-          rows.push({
-
-            name,
-
-            size:
-              variant.size ??
-              variant.sizeMl ??
-              variant.label ??
-              "-",
-
-            price:
-              variant.price ??
-              variant.sellingPrice ??
-              variant.salePrice ??
-              variant.selling_price ??
-              product.price ??
-              product.sellingPrice ??
-              "-"
-
-          });
-
-        });
-
-      } else {
-
-        rows.push({
-
-          name,
-
-          size:
-            product.size ??
-            product.sizeMl ??
-            "-",
-
-          price:
-            product.price ??
-            product.sellingPrice ??
-            product.salePrice ??
-            product.selling_price ??
-            "-"
-
-        });
-
-      }
-
-    });
-
-    return rows;
-  }
-
-  // ==========================================
-  // SAFE HTML OUTPUT
-  // ==========================================
-
-  function escapeHTML(value) {
-
-    return String(value).replace(
-      /[&<>"']/g,
-      char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-      })[char]
-    );
-
-  }
-
-  // ==========================================
-  // PRICE FORMAT
-  // ==========================================
-
-  function formatPrice(value) {
-
-    if (
-      value === null ||
-      value === undefined ||
-      value === ""
-    ) {
-      return "-";
-    }
-
-    const number = Number(value);
-
-    if (!Number.isFinite(number)) {
-      return String(value);
-    }
-
-    return "৳" +
-      number.toLocaleString("en-BD");
-  }
-
-  // ==========================================
-  // RENDER TABLE
-  // ==========================================
-
-  function renderTable(rows) {
-
-    document.getElementById(
-      "productCount"
-    ).textContent = new Set(
-      rows.map(item => item.name)
-    ).size;
-
-    document.getElementById(
-      "variantCount"
-    ).textContent = rows.length;
-
-    if (!rows.length) {
-
-      productTable.innerHTML = `
-        <tr>
-          <td colspan="4" class="empty">
-            No products found.
-          </td>
-        </tr>
-      `;
-
-      return;
-    }
-
-    productTable.innerHTML =
-      rows.map((item, index) => `
-
-        <tr>
-
-          <td>${index + 1}</td>
-
-          <td>
-            ${escapeHTML(item.name)}
-          </td>
-
-          <td>
-            ${escapeHTML(item.size)}
-          </td>
-
-          <td class="price">
-            ${escapeHTML(formatPrice(item.price))}
-          </td>
-
-        </tr>
-
-      `).join("");
-
-  }
-
-  // ==========================================
-  // LOAD ALL PRODUCTS
-  // ==========================================
-
-  async function loadProducts() {
-
-    refreshButton.disabled = true;
-
-    statusElement.className = "status";
-
-    statusElement.textContent =
-      "Connecting to LUXE backend...";
-
-    try {
-
-      const result = await fetchProducts();
-
-      const products =
-        extractProducts(result);
-
-      if (!products) {
-
-        console.error(
-          "Unexpected API response:",
-          result
-        );
-
-        throw new Error(
-          "Unexpected API response. Expected a product array."
-        );
-
-      }
-
-      allRows = normalizeProducts(products);
-
-      renderTable(allRows);
-
-      statusElement.className =
-        "status success";
-
-      statusElement.textContent =
-        `Successfully loaded ${products.length} products.`;
-
-      console.log(
-        "LUXE products:",
-        products
-      );
-
-    } catch (error) {
-
-      console.error(
-        "LUXE API Error:",
-        error
-      );
-
-      statusElement.className =
-        "status error";
-
-      statusElement.textContent =
-        `Unable to load products: ${error.message}`;
-
-      productTable.innerHTML = `
-        <tr>
-          <td colspan="4" class="empty">
-            Unable to load product data.
-            Please check the backend API.
-          </td>
-        </tr>
-      `;
-
-    } finally {
-
-      refreshButton.disabled = false;
-
-    }
-
-  }
-
-  // ==========================================
-  // SEARCH
-  // ==========================================
-
-  document.getElementById(
-    "searchInput"
-  ).addEventListener("input", event => {
-
-    const keyword =
-      event.target.value
-        .toLowerCase()
-        .trim();
-
-    const filtered = allRows.filter(item =>
-
-      item.name.toLowerCase().includes(keyword) ||
-
-      String(item.size)
-        .toLowerCase()
-        .includes(keyword)
-
-    );
-
-    renderTable(filtered);
-
+];
+
+const grid = document.getElementById("productGrid");
+
+function money(value) {
+  return "৳" + Number(value).toLocaleString("en-BD");
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#039;"
+  })[c]);
+}
+
+function render() {
+  const search = document.getElementById("search").value.toLowerCase();
+  const type = document.getElementById("typeFilter").value;
+  const size = document.getElementById("sizeFilter").value;
+
+  const filtered = products.filter(product => {
+    const matchesName = product.name.toLowerCase().includes(search);
+    const matchesType = type === "all" || product.type === type;
+    const matchesSize = size === "all" || product.prices[size] !== undefined;
+
+    return matchesName && matchesType && matchesSize;
   });
 
-  // ==========================================
-  // BUTTON EVENTS
-  // ==========================================
+  document.getElementById("productCount").textContent = filtered.length;
 
-  refreshButton.addEventListener(
-    "click",
-    loadProducts
-  );
+  document.getElementById("variantCount").textContent =
+    filtered.reduce((sum, p) => {
+      if (size !== "all") return sum + 1;
+      return sum + Object.keys(p.prices).length;
+    }, 0);
 
-  document.getElementById(
-    "printButton"
-  ).addEventListener(
-    "click",
-    () => window.print()
-  );
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="no-results">No fragrances found.</div>';
+    return;
+  }
 
-  // ==========================================
-  // INITIAL LOAD
-  // ==========================================
+  grid.innerHTML = filtered.map((product, index) => {
+    const prices = Object.entries(product.prices)
+      .filter(([ml]) => size === "all" || ml === size);
 
-  loadProducts();
+    return `
+      <article class="product-card">
+        <div class="product-title">
+          <div>
+            <h4>${escapeHTML(product.name)}</h4>
+            <span class="type-label">
+              ${product.type === "spray" ? "Perfume Spray" : "Perfume Oil / Roll-on"}
+            </span>
+          </div>
+          <span class="product-number">
+            ${String(index + 1).padStart(2,"0")}
+          </span>
+        </div>
 
+        <div class="price-list">
+          ${prices.map(([ml, price]) => `
+            <div class="price-item">
+              <span>${ml} ml</span>
+              <strong>${money(price)}</strong>
+            </div>
+          `).join("")}
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+["search","typeFilter","sizeFilter"].forEach(id => {
+  document.getElementById(id).addEventListener("input", render);
+});
+
+render();
 </script>
 
 </body>

@@ -3,68 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>LUXE | Product Price List</title>
+
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="LUXE Perfume product catalogue and price list.">
 
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      padding: 30px 15px;
+      font-family: Arial, Helvetica, sans-serif;
       background: #f5f5f5;
       color: #222;
-      font-family: Arial, sans-serif;
+      padding: 25px 15px;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1050px;
       margin: auto;
-      padding: 25px;
-      background: white;
+      background: #fff;
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      box-shadow: 0 5px 25px rgba(0,0,0,0.06);
     }
 
     header {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
-    header h1 {
-      letter-spacing: 7px;
-      margin-bottom: 5px;
+    .brand {
+      font-size: 38px;
+      letter-spacing: 9px;
+      font-weight: 700;
     }
 
-    header p {
-      color: #777;
-      font-size: 13px;
+    .tagline {
+      margin-top: 7px;
+      color: #888;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .heading {
+      margin-top: 25px;
+      font-size: 21px;
+      letter-spacing: 1px;
     }
 
     .toolbar {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    input {
+    .search-box {
       flex: 1;
-      min-width: 180px;
-      padding: 12px;
+      min-width: 200px;
+      padding: 13px 15px;
       border: 1px solid #ddd;
-      border-radius: 6px;
+      border-radius: 7px;
+      outline: none;
       font-size: 14px;
     }
 
+    .search-box:focus {
+      border-color: #222;
+    }
+
     button {
-      padding: 12px 18px;
-      border: none;
-      border-radius: 6px;
+      padding: 12px 20px;
       background: #171717;
       color: white;
+      border: none;
+      border-radius: 7px;
       cursor: pointer;
+      font-size: 13px;
     }
 
     button:hover {
@@ -78,65 +98,102 @@
 
     .summary {
       display: flex;
-      gap: 20px;
+      gap: 25px;
       flex-wrap: wrap;
       margin-bottom: 15px;
-      color: #555;
       font-size: 14px;
+      color: #666;
     }
 
-    #status {
+    .summary strong {
+      color: #111;
+    }
+
+    .status {
       margin: 12px 0;
       font-size: 13px;
       color: #777;
+      min-height: 18px;
     }
 
-    .error {
-      color: #c0392b !important;
+    .status.error {
+      color: #c0392b;
+    }
+
+    .status.success {
+      color: #16834b;
     }
 
     .table-wrapper {
+      width: 100%;
       overflow-x: auto;
+      border-radius: 7px;
     }
 
     table {
       width: 100%;
+      min-width: 550px;
       border-collapse: collapse;
-      min-width: 500px;
     }
 
-    th, td {
-      padding: 13px 15px;
-      text-align: left;
-      border-bottom: 1px solid #eee;
+    thead {
+      background: #171717;
+      color: white;
     }
 
     th {
-      background: #171717;
-      color: white;
+      padding: 15px;
+      text-align: left;
       font-size: 13px;
+      font-weight: 600;
     }
 
-    tr:hover td {
+    td {
+      padding: 14px 15px;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    tbody tr:hover {
       background: #fafafa;
     }
 
     .price {
-      font-weight: bold;
-      color: #147a45;
+      font-weight: 700;
+      color: #16834b;
+      white-space: nowrap;
     }
 
     .empty {
+      padding: 35px;
       text-align: center;
-      padding: 25px;
       color: #888;
     }
 
     footer {
+      margin-top: 30px;
       text-align: center;
-      margin-top: 25px;
-      color: #888;
+      color: #999;
       font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 12px 8px;
+      }
+
+      .container {
+        padding: 18px 12px;
+      }
+
+      .brand {
+        font-size: 31px;
+      }
+
+      .toolbar button {
+        flex: 1;
+      }
     }
 
     @media print {
@@ -147,49 +204,84 @@
 
       .container {
         box-shadow: none;
+        padding: 10px;
       }
 
-      .toolbar, #status {
-        display: none;
+      .toolbar,
+      .status {
+        display: none !important;
+      }
+
+      table {
+        min-width: 100%;
+      }
+
+      th {
+        background: #222 !important;
+        color: white !important;
+        print-color-adjust: exact;
       }
     }
   </style>
 </head>
 
 <body>
+
   <main class="container">
 
     <header>
-      <h1>LUXE</h1>
-      <p>Luxury captured in every drop.</p>
-      <h2>Product Price List</h2>
+      <div class="brand">LUXE</div>
+
+      <p class="tagline">
+        LUXURY CAPTURED IN EVERY DROP
+      </p>
+
+      <h2 class="heading">
+        PRODUCT PRICE LIST
+      </h2>
     </header>
 
-    <div class="toolbar">
+    <section class="toolbar">
+
       <input
-        id="search"
         type="search"
-        placeholder="Search product or size..."
+        id="searchInput"
+        class="search-box"
+        placeholder="Search perfume name or size..."
       >
 
-      <button id="refreshBtn" onclick="loadProducts()">
+      <button id="refreshButton">
         Refresh
       </button>
 
-      <button onclick="window.print()">
+      <button id="printButton">
         Print
       </button>
+
+    </section>
+
+    <section class="summary">
+
+      <div>
+        Total Products:
+        <strong id="productCount">0</strong>
+      </div>
+
+      <div>
+        Total Variants:
+        <strong id="variantCount">0</strong>
+      </div>
+
+    </section>
+
+    <div id="status" class="status">
+      Connecting to LUXE server...
     </div>
 
-    <div class="summary">
-      <span>Products: <strong id="productCount">0</strong></span>
-      <span>Variants: <strong id="variantCount">0</strong></span>
-    </div>
+    <section class="table-wrapper">
 
-    <div id="status">Connecting to LUXE server...</div>
-
-    <div class="table-wrapper">
       <table>
+
         <thead>
           <tr>
             <th>#</th>
@@ -200,264 +292,436 @@
         </thead>
 
         <tbody id="productTable">
+
           <tr>
-            <td colspan="4" class="empty">Loading products...</td>
+            <td colspan="4" class="empty">
+              Loading products...
+            </td>
           </tr>
+
         </tbody>
+
       </table>
-    </div>
+
+    </section>
 
     <footer>
-      LUXE Perfume · Wear the impression.
+      LUXE PERFUME · WEAR THE IMPRESSION
     </footer>
 
   </main>
 
-  <script>
-    // Your deployed backend URLs
-    const API_SERVERS = [
-      "https://perfume-stock-management-system-545.vercel.app",
-      "https://perfume-stock-management-system-ewa.vercel.app"
+<script>
+
+  // ==========================================
+  // API CONFIGURATION
+  // ==========================================
+
+  const API_BASE_URL =
+    "https://perfume-stock-management-system-ewa.vercel.app";
+
+  const PRODUCT_ENDPOINT = "/api/products";
+
+  // If your API requires authentication,
+  // add a valid token here.
+  const AUTH_TOKEN = "";
+
+  let allRows = [];
+
+  // ==========================================
+  // DOM ELEMENTS
+  // ==========================================
+
+  const productTable =
+    document.getElementById("productTable");
+
+  const statusElement =
+    document.getElementById("status");
+
+  const refreshButton =
+    document.getElementById("refreshButton");
+
+  // ==========================================
+  // FETCH PRODUCTS
+  // ==========================================
+
+  async function fetchProducts() {
+
+    const headers = {
+      "Accept": "application/json"
+    };
+
+    if (AUTH_TOKEN) {
+      headers.Authorization =
+        `Bearer ${AUTH_TOKEN}`;
+    }
+
+    const response = await fetch(
+      `${API_BASE_URL}${PRODUCT_ENDPOINT}`,
+      {
+        method: "GET",
+        headers,
+        cache: "no-store"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        `HTTP ${response.status}: ${response.statusText}`
+      );
+    }
+
+    return await response.json();
+  }
+
+  // ==========================================
+  // EXTRACT PRODUCT ARRAY
+  // ==========================================
+
+  function extractProducts(result) {
+
+    if (Array.isArray(result)) {
+      return result;
+    }
+
+    const possibleArrays = [
+      result?.products,
+      result?.data?.products,
+      result?.data,
+      result?.results
     ];
 
-    // Product API endpoint
-    const PRODUCT_ENDPOINT = "/api/products";
+    return possibleArrays.find(
+      Array.isArray
+    ) || null;
+  }
 
-    // Add a token here if your product GET endpoint requires authentication.
-    const AUTH_TOKEN = "";
+  // ==========================================
+  // EXTRACT SIZE VARIANTS
+  // ==========================================
 
-    let allRows = [];
+  function getVariants(product) {
 
-    async function fetchFromServer(baseURL) {
-      const headers = {
-        "Accept": "application/json"
-      };
+    const sizes = product.sizes;
 
-      if (AUTH_TOKEN) {
-        headers.Authorization = `Bearer ${AUTH_TOKEN}`;
-      }
-
-      const response = await fetch(
-        `${baseURL}${PRODUCT_ENDPOINT}`,
-        {
-          method: "GET",
-          headers,
-          cache: "no-store"
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(
-          `${baseURL}: HTTP ${response.status}`
-        );
-      }
-
-      return await response.json();
+    if (Array.isArray(sizes)) {
+      return sizes;
     }
 
-    function extractProducts(result) {
-      if (Array.isArray(result)) return result;
-
-      const candidates = [
-        result?.products,
-        result?.data?.products,
-        result?.data,
-        result?.results
-      ];
-
-      return candidates.find(Array.isArray) || null;
-    }
-
-    function getVariants(product) {
-      const sizes = product.sizes;
-
-      if (Array.isArray(sizes)) {
-        return sizes;
-      }
-
-      if (sizes && typeof sizes === "object") {
-        return Object.entries(sizes).map(([size, value]) => ({
+    if (
+      sizes &&
+      typeof sizes === "object"
+    ) {
+      return Object.entries(sizes).map(
+        ([size, value]) => ({
           size,
           ...(typeof value === "object" && value !== null
             ? value
             : { price: value })
-        }));
-      }
-
-      return [];
+        })
+      );
     }
 
-    function formatPrice(value) {
-      if (value === undefined || value === null || value === "") {
-        return "-";
+    return [];
+  }
+
+  // ==========================================
+  // NORMALIZE PRODUCT DATA
+  // ==========================================
+
+  function normalizeProducts(products) {
+
+    const rows = [];
+
+    products.forEach(product => {
+
+      const name =
+        product.name ||
+        product.productName ||
+        product.title ||
+        "Unnamed Product";
+
+      const variants = getVariants(product);
+
+      if (variants.length > 0) {
+
+        variants.forEach(variant => {
+
+          rows.push({
+
+            name,
+
+            size:
+              variant.size ??
+              variant.sizeMl ??
+              variant.label ??
+              "-",
+
+            price:
+              variant.price ??
+              variant.sellingPrice ??
+              variant.salePrice ??
+              variant.selling_price ??
+              product.price ??
+              product.sellingPrice ??
+              "-"
+
+          });
+
+        });
+
+      } else {
+
+        rows.push({
+
+          name,
+
+          size:
+            product.size ??
+            product.sizeMl ??
+            "-",
+
+          price:
+            product.price ??
+            product.sellingPrice ??
+            product.salePrice ??
+            product.selling_price ??
+            "-"
+
+        });
+
       }
 
-      const number = Number(value);
+    });
 
-      return Number.isFinite(number)
-        ? "৳" + number.toLocaleString("en-BD")
-        : String(value);
-    }
+    return rows;
+  }
 
-    function escapeHTML(value) {
-      return String(value).replace(/[&<>"']/g, char => ({
+  // ==========================================
+  // SAFE HTML OUTPUT
+  // ==========================================
+
+  function escapeHTML(value) {
+
+    return String(value).replace(
+      /[&<>"']/g,
+      char => ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
         '"': "&quot;",
         "'": "&#039;"
-      })[char]);
+      })[char]
+    );
+
+  }
+
+  // ==========================================
+  // PRICE FORMAT
+  // ==========================================
+
+  function formatPrice(value) {
+
+    if (
+      value === null ||
+      value === undefined ||
+      value === ""
+    ) {
+      return "-";
     }
 
-    function normalizeProducts(products) {
-      const rows = [];
+    const number = Number(value);
 
-      products.forEach(product => {
-        const name = product.name || product.productName || "Unnamed Product";
-        const variants = getVariants(product);
-
-        if (variants.length > 0) {
-          variants.forEach(variant => {
-            rows.push({
-              name,
-              size:
-                variant.size ??
-                variant.sizeMl ??
-                variant.label ??
-                "-",
-              price:
-                variant.price ??
-                variant.sellingPrice ??
-                variant.salePrice ??
-                variant.selling_price ??
-                product.price ??
-                product.sellingPrice ??
-                "-"
-            });
-          });
-        } else {
-          rows.push({
-            name,
-            size: product.size ?? product.sizeMl ?? "-",
-            price:
-              product.price ??
-              product.sellingPrice ??
-              product.salePrice ??
-              product.selling_price ??
-              "-"
-          });
-        }
-      });
-
-      return rows;
+    if (!Number.isFinite(number)) {
+      return String(value);
     }
 
-    async function loadProducts() {
-      const status = document.getElementById("status");
-      const table = document.getElementById("productTable");
-      const button = document.getElementById("refreshBtn");
+    return "৳" +
+      number.toLocaleString("en-BD");
+  }
 
-      button.disabled = true;
-      status.className = "";
-      status.textContent = "Connecting to backend...";
+  // ==========================================
+  // RENDER TABLE
+  // ==========================================
 
-      let lastError = null;
-      let products = null;
-      let connectedServer = null;
+  function renderTable(rows) {
 
-      for (const server of API_SERVERS) {
-        try {
-          status.textContent = `Connecting to ${server}...`;
+    document.getElementById(
+      "productCount"
+    ).textContent = new Set(
+      rows.map(item => item.name)
+    ).size;
 
-          const result = await fetchFromServer(server);
-          const extracted = extractProducts(result);
+    document.getElementById(
+      "variantCount"
+    ).textContent = rows.length;
 
-          if (!extracted) {
-            throw new Error(
-              "API responded, but the product list format was unexpected."
-            );
-          }
+    if (!rows.length) {
 
-          products = extracted;
-          connectedServer = server;
-          break;
+      productTable.innerHTML = `
+        <tr>
+          <td colspan="4" class="empty">
+            No products found.
+          </td>
+        </tr>
+      `;
 
-        } catch (error) {
-          console.error("Backend failed:", server, error);
-          lastError = error;
-        }
-      }
+      return;
+    }
 
-      button.disabled = false;
+    productTable.innerHTML =
+      rows.map((item, index) => `
+
+        <tr>
+
+          <td>${index + 1}</td>
+
+          <td>
+            ${escapeHTML(item.name)}
+          </td>
+
+          <td>
+            ${escapeHTML(item.size)}
+          </td>
+
+          <td class="price">
+            ${escapeHTML(formatPrice(item.price))}
+          </td>
+
+        </tr>
+
+      `).join("");
+
+  }
+
+  // ==========================================
+  // LOAD ALL PRODUCTS
+  // ==========================================
+
+  async function loadProducts() {
+
+    refreshButton.disabled = true;
+
+    statusElement.className = "status";
+
+    statusElement.textContent =
+      "Connecting to LUXE backend...";
+
+    try {
+
+      const result = await fetchProducts();
+
+      const products =
+        extractProducts(result);
 
       if (!products) {
-        status.className = "error";
-        status.textContent =
-          "Unable to load products. " +
-          (lastError?.message || "Check your API and CORS configuration.");
 
-        table.innerHTML = `
-          <tr>
-            <td colspan="4" class="empty">
-              Product data unavailable.
-              Please try refreshing.
-            </td>
-          </tr>
-        `;
+        console.error(
+          "Unexpected API response:",
+          result
+        );
 
-        return;
+        throw new Error(
+          "Unexpected API response. Expected a product array."
+        );
+
       }
 
       allRows = normalizeProducts(products);
 
       renderTable(allRows);
 
-      status.textContent =
-        `Connected successfully · ${products.length} products loaded`;
-    }
+      statusElement.className =
+        "status success";
 
-    function renderTable(rows) {
-      const table = document.getElementById("productTable");
+      statusElement.textContent =
+        `Successfully loaded ${products.length} products.`;
 
-      document.getElementById("productCount").textContent =
-        new Set(rows.map(row => row.name)).size;
-
-      document.getElementById("variantCount").textContent =
-        rows.length;
-
-      if (!rows.length) {
-        table.innerHTML = `
-          <tr>
-            <td colspan="4" class="empty">
-              No products available.
-            </td>
-          </tr>
-        `;
-        return;
-      }
-
-      table.innerHTML = rows.map((item, index) => `
-        <tr>
-          <td>${index + 1}</td>
-          <td>${escapeHTML(item.name)}</td>
-          <td>${escapeHTML(item.size)}</td>
-          <td class="price">${escapeHTML(formatPrice(item.price))}</td>
-        </tr>
-      `).join("");
-    }
-
-    document.getElementById("search").addEventListener("input", event => {
-      const keyword = event.target.value.toLowerCase().trim();
-
-      const filtered = allRows.filter(item =>
-        item.name.toLowerCase().includes(keyword) ||
-        String(item.size).toLowerCase().includes(keyword)
+      console.log(
+        "LUXE products:",
+        products
       );
 
-      renderTable(filtered);
-    });
+    } catch (error) {
 
-    loadProducts();
-  </script>
+      console.error(
+        "LUXE API Error:",
+        error
+      );
+
+      statusElement.className =
+        "status error";
+
+      statusElement.textContent =
+        `Unable to load products: ${error.message}`;
+
+      productTable.innerHTML = `
+        <tr>
+          <td colspan="4" class="empty">
+            Unable to load product data.
+            Please check the backend API.
+          </td>
+        </tr>
+      `;
+
+    } finally {
+
+      refreshButton.disabled = false;
+
+    }
+
+  }
+
+  // ==========================================
+  // SEARCH
+  // ==========================================
+
+  document.getElementById(
+    "searchInput"
+  ).addEventListener("input", event => {
+
+    const keyword =
+      event.target.value
+        .toLowerCase()
+        .trim();
+
+    const filtered = allRows.filter(item =>
+
+      item.name.toLowerCase().includes(keyword) ||
+
+      String(item.size)
+        .toLowerCase()
+        .includes(keyword)
+
+    );
+
+    renderTable(filtered);
+
+  });
+
+  // ==========================================
+  // BUTTON EVENTS
+  // ==========================================
+
+  refreshButton.addEventListener(
+    "click",
+    loadProducts
+  );
+
+  document.getElementById(
+    "printButton"
+  ).addEventListener(
+    "click",
+    () => window.print()
+  );
+
+  // ==========================================
+  // INITIAL LOAD
+  // ==========================================
+
+  loadProducts();
+
+</script>
+
 </body>
 </html>

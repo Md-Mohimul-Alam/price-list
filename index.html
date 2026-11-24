@@ -1,1462 +1,923 @@
 
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <meta name="theme-color" content="#11110f" />
 
-  <title>LUXE | Luxury Perfume Collection</title>
+  <title>LUXE | Perfume Price List</title>
 
   <meta
-
     name="description"
-
-    content="Explore the LUXE perfume collection and price list. Luxury captured in every drop."
-
+    content="Explore LUXE inspired perfume sprays and perfume oils with prices by size."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
-
     rel="stylesheet"
-
   />
 
   <style>
-
     :root {
-
       --bg: #11110f;
-
       --bg-soft: #171714;
-
       --surface: #1d1d19;
-
       --surface-light: #25251f;
 
       --gold: #c7a66a;
-
       --gold-light: #e8d5ad;
-
       --gold-dark: #8e7040;
 
       --text: #f5f0e7;
-
       --muted: #aaa397;
 
       --border: rgba(199, 166, 106, 0.22);
-
       --border-light: rgba(255, 255, 255, 0.07);
-
     }
 
     * {
-
       margin: 0;
-
       padding: 0;
-
       box-sizing: border-box;
-
     }
 
     html {
-
       scroll-behavior: smooth;
-
     }
 
     body {
-
       min-height: 100vh;
-
       background:
-
         radial-gradient(
-
           ellipse at 50% 0%,
-
           rgba(199, 166, 106, 0.09),
-
           transparent 45%
-
         ),
-
         var(--bg);
 
       color: var(--text);
-
       font-family: "DM Sans", sans-serif;
-
     }
 
     button,
-
     input {
-
       font: inherit;
-
     }
 
     button {
-
       cursor: pointer;
-
     }
 
     .container {
-
-      width: min(1180px, 92%);
-
+      width: min(1050px, 92%);
       margin: auto;
-
     }
 
     .hidden {
-
       display: none !important;
-
     }
 
     /* =========================
-
        HEADER
-
     ========================= */
 
     .hero {
-
       position: relative;
-
-      padding: 65px 20px 55px;
-
+      padding: 65px 20px 50px;
       text-align: center;
-
       overflow: hidden;
-
       border-bottom: 1px solid var(--border);
-
     }
 
     .hero::before,
-
     .hero::after {
-
       content: "";
-
       position: absolute;
-
       width: 220px;
-
       height: 220px;
-
       border: 1px solid rgba(199, 166, 106, 0.08);
-
       border-radius: 50%;
-
       pointer-events: none;
-
     }
 
     .hero::before {
-
       top: -140px;
-
       left: -80px;
-
     }
 
     .hero::after {
-
       right: -80px;
-
       bottom: -150px;
-
     }
 
     .hero-content {
-
       position: relative;
-
       z-index: 1;
-
     }
 
     .hero-label {
-
       display: inline-flex;
-
       align-items: center;
-
       gap: 10px;
 
       color: var(--gold);
-
       font-size: 10px;
-
       letter-spacing: 5px;
-
       text-transform: uppercase;
 
       margin-bottom: 12px;
-
     }
 
     .hero-label::before,
-
     .hero-label::after {
-
       content: "";
-
       width: 28px;
-
       height: 1px;
-
       background: var(--gold-dark);
-
     }
 
     .brand {
-
       font-family: "Cormorant Garamond", serif;
-
       font-size: clamp(65px, 11vw, 105px);
-
       line-height: 0.95;
-
       font-weight: 600;
-
       letter-spacing: 17px;
-
       color: var(--gold-light);
-
       text-shadow: 0 5px 30px rgba(199, 166, 106, 0.12);
-
       padding-left: 17px;
-
     }
 
     .tagline {
-
       margin-top: 16px;
-
       color: var(--muted);
-
       font-size: 11px;
-
       letter-spacing: 5px;
-
       text-transform: uppercase;
-
     }
 
     .hero-divider {
-
       width: 65px;
-
       height: 1px;
-
       background: var(--gold);
-
       margin: 25px auto;
-
     }
 
     .hero-title {
-
       font-family: "Cormorant Garamond", serif;
-
-      font-size: clamp(26px, 4vw, 36px);
-
+      font-size: clamp(27px, 4vw, 38px);
       font-weight: 500;
-
       color: var(--gold-light);
-
       letter-spacing: 1px;
-
     }
 
     .hero-description {
-
       margin-top: 8px;
-
       color: var(--muted);
-
       font-size: 12px;
-
       letter-spacing: 1px;
-
     }
 
     /* =========================
-
-       MAIN CONTENT
-
+       INTRO
     ========================= */
 
     main {
-
-      padding-top: 35px;
-
+      padding-top: 38px;
     }
 
     .intro {
-
       text-align: center;
-
       margin-bottom: 30px;
-
     }
 
     .intro h2 {
-
       font-family: "Cormorant Garamond", serif;
-
-      font-size: 30px;
-
+      font-size: 32px;
       font-weight: 500;
-
       color: var(--gold-light);
-
     }
 
     .intro p {
-
       color: var(--muted);
-
       font-size: 12px;
-
-      margin-top: 5px;
-
+      margin-top: 6px;
     }
 
     /* =========================
-
        SEARCH AND FILTERS
-
     ========================= */
 
     .toolbar {
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 12px;
-
       flex-wrap: wrap;
 
-      padding: 17px;
-
-      margin-bottom: 40px;
+      padding: 16px;
+      margin-bottom: 42px;
 
       background: rgba(29, 29, 25, 0.85);
-
       border: 1px solid var(--border);
-
       border-radius: 10px;
-
     }
 
     .search-box {
-
       flex: 1;
-
       min-width: 220px;
-
-      position: relative;
-
     }
 
     .search-box input {
-
       width: 100%;
-
       padding: 13px 16px;
 
       color: var(--text);
-
       background: var(--bg-soft);
 
       border: 1px solid var(--border);
-
       border-radius: 6px;
-
       outline: none;
 
       font-size: 13px;
-
       transition: border-color 0.2s;
-
     }
 
     .search-box input:focus {
-
       border-color: var(--gold);
-
     }
 
     .search-box input::placeholder {
-
       color: #77736b;
-
     }
 
     .filter-group {
-
       display: flex;
-
       gap: 7px;
-
       flex-wrap: wrap;
-
     }
 
     .filter-btn,
-
     .action-btn {
-
       padding: 12px 16px;
 
       color: var(--gold-light);
-
       background: transparent;
 
       border: 1px solid var(--border);
-
       border-radius: 6px;
 
       font-size: 12px;
-
       transition: all 0.2s;
-
     }
 
     .filter-btn:hover,
-
     .filter-btn.active,
-
     .action-btn:hover {
-
       color: #17130d;
-
       background: var(--gold);
-
       border-color: var(--gold);
-
     }
 
     /* =========================
-
-       COLLECTION SECTION
-
+       COLLECTION
     ========================= */
 
     .collection {
-
       margin-bottom: 55px;
-
     }
 
     .section-heading {
-
       display: flex;
-
       justify-content: space-between;
-
       align-items: end;
-
       gap: 15px;
 
       padding-bottom: 17px;
-
-      margin-bottom: 20px;
+      margin-bottom: 22px;
 
       border-bottom: 1px solid var(--border);
-
     }
 
     .section-kicker {
-
       color: var(--gold);
-
       font-size: 10px;
-
       letter-spacing: 3px;
-
       text-transform: uppercase;
-
       margin-bottom: 5px;
-
     }
 
     .section-heading h2 {
-
       color: var(--gold-light);
-
       font-family: "Cormorant Garamond", serif;
-
       font-size: clamp(29px, 5vw, 42px);
-
       font-weight: 500;
-
       letter-spacing: 1px;
-
     }
 
     .section-heading p {
-
       color: var(--muted);
-
       font-size: 12px;
-
       margin-top: 3px;
-
     }
 
     .product-count {
-
       color: var(--gold);
-
       font-size: 12px;
-
       white-space: nowrap;
-
       padding-bottom: 4px;
-
     }
 
     /* =========================
-
-       PRICE TABLE
-
+       PRICE LIST ENTRIES
     ========================= */
 
-    .table-wrapper {
+    .price-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-      width: 100%;
+    .price-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
 
-      overflow-x: auto;
+      padding: 21px 24px;
+
+      background: linear-gradient(
+        110deg,
+        var(--surface),
+        var(--bg-soft)
+      );
 
       border: 1px solid var(--border);
-
       border-radius: 9px;
 
-      background: var(--surface);
-
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-
+      transition:
+        border-color 0.25s,
+        background 0.25s,
+        transform 0.25s;
     }
 
-    .price-table {
-
-      width: 100%;
-
-      min-width: 650px;
-
-      border-collapse: collapse;
-
-    }
-
-    .price-table thead {
-
+    .price-item:hover {
+      border-color: rgba(199, 166, 106, 0.55);
       background: var(--surface-light);
-
+      transform: translateY(-2px);
     }
 
-    .price-table th {
-
-      padding: 17px 15px;
-
-      color: var(--gold-light);
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      letter-spacing: 1px;
-
-      text-transform: uppercase;
-
-      text-align: center;
-
-      white-space: nowrap;
-
-      border-bottom: 1px solid var(--border);
-
-    }
-
-    .price-table th:first-child {
-
-      min-width: 220px;
-
-      text-align: left;
-
-      padding-left: 22px;
-
-    }
-
-    .price-table td {
-
-      padding: 16px 15px;
-
-      color: var(--text);
-
-      font-size: 13px;
-
-      text-align: center;
-
-      white-space: nowrap;
-
-      border-bottom: 1px solid var(--border-light);
-
-    }
-
-    .price-table tbody tr {
-
-      transition: background 0.2s;
-
-    }
-
-    .price-table tbody tr:hover {
-
-      background: rgba(199, 166, 106, 0.06);
-
-    }
-
-    .price-table tbody tr:last-child td {
-
-      border-bottom: none;
-
+    .product-info {
+      min-width: 0;
+      flex: 1;
     }
 
     .product-name {
-
-      min-width: 220px;
-
-      color: var(--text) !important;
-
+      color: var(--text);
       font-family: "Cormorant Garamond", serif;
-
-      font-size: 20px !important;
-
+      font-size: 24px;
       font-weight: 600;
-
-      text-align: left !important;
-
-      white-space: normal !important;
-
-      padding-left: 22px !important;
-
+      line-height: 1.2;
+      overflow-wrap: anywhere;
     }
 
-    .price-value {
+    .product-type {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
 
-      color: var(--gold-light) !important;
+    .size-prices {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
 
+    .size-price {
+      min-width: 90px;
+      padding: 10px 13px;
+
+      text-align: center;
+
+      background: rgba(199, 166, 106, 0.07);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .size-label {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .size-value {
+      display: block;
+      color: var(--gold-light);
+      font-size: 15px;
       font-weight: 700;
-
-      font-size: 13px;
-
+      white-space: nowrap;
     }
 
-    .unavailable {
-
-      color: #68645d !important;
-
-    }
-
-    .empty {
-
-      padding: 35px 15px !important;
-
-      color: var(--muted) !important;
-
-      text-align: center !important;
-
+    .unavailable-size {
+      opacity: 0.35;
     }
 
     /* =========================
+       EMPTY RESULTS
+    ========================= */
 
-       LOADING / ERROR
+    .empty {
+      padding: 35px 15px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    }
 
+    /* =========================
+       LOADING AND ERROR
     ========================= */
 
     .status {
-
       text-align: center;
-
       padding: 50px 15px;
-
       color: var(--muted);
-
       font-size: 13px;
-
     }
 
     .loader {
-
       width: 32px;
-
       height: 32px;
-
       margin: 0 auto 15px;
 
       border: 3px solid var(--border);
-
       border-top-color: var(--gold);
-
       border-radius: 50%;
 
       animation: spin 0.8s linear infinite;
-
     }
 
     @keyframes spin {
-
-      to { transform: rotate(360deg); }
-
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .error {
-
       padding: 20px;
-
       margin: 25px 0;
 
       color: #ffaaaa;
-
       background: rgba(255, 80, 80, 0.08);
 
       border: 1px solid rgba(255, 80, 80, 0.25);
-
       border-radius: 8px;
 
       text-align: center;
-
       font-size: 13px;
-
     }
 
     /* =========================
-
        FOOTER
-
     ========================= */
 
     footer {
-
       margin-top: 65px;
-
       padding: 40px 15px;
 
       text-align: center;
 
       border-top: 1px solid var(--border);
-
       background: rgba(0, 0, 0, 0.12);
-
     }
 
     .footer-brand {
-
       color: var(--gold-light);
-
       font-family: "Cormorant Garamond", serif;
-
       font-size: 38px;
-
       letter-spacing: 8px;
-
     }
 
     .footer-tagline {
-
       margin-top: 7px;
-
       color: var(--muted);
-
       font-size: 11px;
-
       letter-spacing: 1px;
-
     }
 
     .footer-sign {
-
       margin-top: 17px;
-
       color: var(--gold);
-
       font-family: "Cormorant Garamond", serif;
-
       font-size: 21px;
-
       font-style: italic;
-
     }
 
     .footer-note {
-
       margin-top: 20px;
-
       color: #77736b;
-
       font-size: 10px;
-
       letter-spacing: 1px;
-
     }
 
     /* =========================
-
        MOBILE
-
     ========================= */
 
     @media (max-width: 650px) {
-
       .hero {
-
         padding: 48px 15px 40px;
-
       }
 
       .brand {
-
         letter-spacing: 11px;
-
         padding-left: 11px;
-
       }
 
       .tagline {
-
         font-size: 9px;
-
         letter-spacing: 3px;
-
       }
 
       .toolbar {
-
         padding: 12px;
-
       }
 
       .search-box {
-
         flex-basis: 100%;
-
       }
 
       .filter-group {
-
         width: 100%;
-
       }
 
       .filter-btn,
-
       .action-btn {
-
         flex: 1;
-
         padding: 11px 8px;
-
         font-size: 11px;
-
       }
 
-      .section-heading h2 {
-
-        font-size: 29px;
-
-      }
-
-      .price-table th,
-
-      .price-table td {
-
-        padding: 14px 12px;
-
+      .price-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 17px;
       }
 
       .product-name {
-
-        padding-left: 15px !important;
-
+        font-size: 23px;
       }
 
+      .size-prices {
+        justify-content: flex-start;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .size-price {
+        min-width: 0;
+        padding: 10px 5px;
+      }
+
+      .size-value {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .size-prices {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     /* =========================
-
        PRINT
-
     ========================= */
 
     @media print {
-
       @page {
-
         size: A4 portrait;
-
         margin: 12mm;
-
       }
 
       body {
-
         background: white !important;
-
         color: black !important;
-
       }
 
       .hero {
-
         padding: 10px 0 20px;
-
         background: white !important;
-
       }
 
       .hero::before,
-
       .hero::after,
-
       .toolbar,
-
       footer,
-
       #loading,
-
       #errorBox {
-
         display: none !important;
-
       }
 
       .brand,
-
       .hero-title,
-
       .section-heading h2,
-
       .product-name,
-
-      .price-value {
-
+      .size-value {
         color: black !important;
-
       }
 
       .tagline,
-
       .hero-description,
-
       .section-heading p,
-
-      .product-count {
-
+      .product-count,
+      .product-type,
+      .size-label {
         color: #555 !important;
-
       }
 
       .collection {
-
         margin: 20px 0;
+      }
+
+      .price-list {
+        gap: 8px;
+      }
+
+      .price-item {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        transform: none !important;
 
         break-inside: avoid;
+        page-break-inside: avoid;
 
+        padding: 12px 15px;
       }
 
-      .table-wrapper {
-
-        overflow: visible;
-
-        border: 1px solid #ccc;
-
-        box-shadow: none;
-
+      .size-price {
+        background: white !important;
+        border: 1px solid #ddd !important;
       }
 
-      .price-table {
-
-        width: 100%;
-
-        min-width: 0;
-
-      }
-
-      .price-table thead {
-
-        background: #eee !important;
-
-      }
-
-      .price-table th {
-
+      .size-value {
         color: black !important;
-
-        background: #eee !important;
-
-        border-bottom: 1px solid #aaa;
-
       }
 
-      .price-table td {
-
-        color: black !important;
-
-        border-bottom: 1px solid #ddd;
-
+      .unavailable-size {
+        display: none;
       }
 
-      .price-table tbody tr {
-
-        break-inside: avoid;
-
+      .empty {
+        color: #555 !important;
+        background: white !important;
       }
-
-      .unavailable {
-
-        color: #999 !important;
-
-      }
-
     }
-
   </style>
-
 </head>
 
 <body>
 
-  <!-- =========================
-
-       HERO HEADER
-
-  ========================= -->
+  <!-- HEADER -->
 
   <header class="hero">
-
     <div class="hero-content">
 
       <div class="hero-label">
-
         THE ART OF FRAGRANCE
-
       </div>
 
       <div class="brand">
-
         LUXE
-
       </div>
 
       <div class="tagline">
-
         Luxury captured in every drop
-
       </div>
 
       <div class="hero-divider"></div>
 
       <h1 class="hero-title">
-
-        Perfume Collection
-
+        Perfume Price List
       </h1>
 
       <p class="hero-description">
-
-        Explore our fragrance collection and price list
-
+        Discover your favourite fragrance and its available sizes
       </p>
 
     </div>
-
   </header>
 
-  <!-- =========================
 
-       MAIN
-
-  ========================= -->
+  <!-- MAIN CONTENT -->
 
   <main class="container">
 
     <div class="intro">
+      <h2>Our Fragrance Prices</h2>
 
-      <h2>Discover Your Signature Scent</h2>
-
-      <p>Find your favourite fragrance in your preferred size.</p>
-
+      <p>
+        Choose your preferred size and explore the price.
+      </p>
     </div>
 
-    <!-- SEARCH / FILTER -->
+
+    <!-- SEARCH AND FILTER -->
 
     <div class="toolbar">
 
       <div class="search-box">
-
         <input
-
           type="search"
-
           id="searchInput"
-
-          placeholder="Search your favourite perfume..."
-
+          placeholder="Search perfume name..."
           autocomplete="off"
-
         />
-
       </div>
 
       <div class="filter-group">
 
-        <button
-
-          class="filter-btn active"
-
-          data-filter="all"
-
-        >
-
+        <button class="filter-btn active" data-filter="all">
           All
-
         </button>
 
-        <button
-
-          class="filter-btn"
-
-          data-filter="spray"
-
-        >
-
+        <button class="filter-btn" data-filter="spray">
           Spray
-
         </button>
 
-        <button
-
-          class="filter-btn"
-
-          data-filter="oil"
-
-        >
-
+        <button class="filter-btn" data-filter="oil">
           Perfume Oil
-
         </button>
 
-        <button
-
-          class="action-btn"
-
-          id="refreshBtn"
-
-        >
-
+        <button class="action-btn" id="refreshBtn">
           ↻ Refresh
-
         </button>
 
-        <button
-
-          class="action-btn"
-
-          id="printBtn"
-
-        >
-
+        <button class="action-btn" id="printBtn">
           Print
-
         </button>
 
       </div>
 
     </div>
 
+
     <!-- LOADING -->
 
     <div id="loading" class="status">
-
       <div class="loader"></div>
-
-      Loading LUXE fragrance collection...
-
+      Loading LUXE price list...
     </div>
+
 
     <!-- ERROR -->
 
     <div id="errorBox" class="error hidden"></div>
 
-    <!-- PRODUCT TABLES -->
+
+    <!-- PRICE LIST CONTENT -->
 
     <div id="content" class="hidden">
 
       <!-- SPRAY COLLECTION -->
 
-      <section
-
-        class="collection"
-
-        id="spraySection"
-
-      >
+      <section class="collection" id="spraySection">
 
         <div class="section-heading">
 
           <div>
-
             <div class="section-kicker">
-
               COLLECTION 01
-
             </div>
 
             <h2>Spray Collection</h2>
 
             <p>
-
-              Discover your signature fragrance
-
+              Available spray sizes and prices
             </p>
-
           </div>
 
-          <span
-
-            class="product-count"
-
-            id="sprayCount"
-
-          >
-
+          <span class="product-count" id="sprayCount">
             0 products
-
           </span>
 
         </div>
 
-        <div class="table-wrapper">
-
-          <table class="price-table">
-
-            <thead>
-
-              <tr>
-
-                <th>Perfume Name</th>
-
-                <th>6 ml</th>
-
-                <th>15 ml</th>
-
-                <th>30 ml</th>
-
-                <th>50 ml</th>
-
-                <th>100 ml</th>
-
-              </tr>
-
-            </thead>
-
-            <tbody id="sprayTable"></tbody>
-
-          </table>
-
-        </div>
+        <div class="price-list" id="sprayList"></div>
 
       </section>
 
+
       <!-- PERFUME OIL COLLECTION -->
 
-      <section
-
-        class="collection"
-
-        id="oilSection"
-
-      >
+      <section class="collection" id="oilSection">
 
         <div class="section-heading">
 
           <div>
-
             <div class="section-kicker">
-
               COLLECTION 02
-
             </div>
 
             <h2>Perfume Oil Collection</h2>
 
             <p>
-
-              Concentrated fragrance in every drop
-
+              Available oil sizes and prices
             </p>
-
           </div>
 
-          <span
-
-            class="product-count"
-
-            id="oilCount"
-
-          >
-
+          <span class="product-count" id="oilCount">
             0 products
-
           </span>
 
         </div>
 
-        <div class="table-wrapper">
-
-          <table class="price-table">
-
-            <thead>
-
-              <tr>
-
-                <th>Perfume Name</th>
-
-                <th>3.5 ml</th>
-
-                <th>6 ml</th>
-
-                <th>15 ml</th>
-
-                <th>30 ml</th>
-
-              </tr>
-
-            </thead>
-
-            <tbody id="oilTable"></tbody>
-
-          </table>
-
-        </div>
+        <div class="price-list" id="oilList"></div>
 
       </section>
 
-      <div
 
-        id="emptyMessage"
+      <!-- EMPTY SEARCH -->
 
-        class="empty hidden"
-
-      >
-
+      <div id="emptyMessage" class="empty hidden">
         No products found.
-
       </div>
 
     </div>
 
   </main>
 
-  <!-- =========================
 
-       FOOTER
-
-  ========================= -->
+  <!-- FOOTER -->
 
   <footer>
 
     <div class="footer-brand">
-
       LUXE
-
     </div>
 
     <p class="footer-tagline">
-
       Luxury captured in every drop.
-
     </p>
 
     <div class="footer-sign">
-
       Wear the impression.
-
     </div>
 
     <p class="footer-note">
-
       LUXE · INSPIRED PERFUME OILS & SPRAYS
-
     </p>
 
   </footer>
 
-  <!-- =========================
 
-       JAVASCRIPT
-
-  ========================= -->
+  <!-- JAVASCRIPT -->
 
   <script>
 
-    /*
-
-      API CONFIGURATION
-
-    */
+    /* =========================
+       API CONFIGURATION
+    ========================= */
 
     const API_URL =
-
       "https://perfume-stock-management-system-ewa.vercel.app/api/products";
 
-    /*
 
-      AVAILABLE SIZE COLUMNS
-
-    */
+    /* =========================
+       AVAILABLE SIZES
+    ========================= */
 
     const SPRAY_SIZES = [6, 15, 30, 50, 100];
 
     const OIL_SIZES = [3.5, 6, 15, 30];
 
-    /*
 
-      GLOBAL STATE
-
-    */
+    /* =========================
+       GLOBAL STATE
+    ========================= */
 
     let allProducts = [];
 
     let currentFilter = "all";
 
-    /*
 
-      DOM ELEMENTS
-
-    */
+    /* =========================
+       DOM ELEMENTS
+    ========================= */
 
     const loading = document.getElementById("loading");
 
@@ -1466,158 +927,101 @@
 
     const searchInput = document.getElementById("searchInput");
 
-    const sprayTable = document.getElementById("sprayTable");
+    const sprayList = document.getElementById("sprayList");
 
-    const oilTable = document.getElementById("oilTable");
+    const oilList = document.getElementById("oilList");
 
-    /*
 
-      PRODUCT NAME
-
-    */
+    /* =========================
+       PRODUCT NAME
+    ========================= */
 
     function getProductName(product) {
 
       return (
-
         product.name ||
-
         product.productName ||
-
         product.title ||
-
         product.perfumeName ||
-
         "Unnamed Product"
-
       );
 
     }
 
-    /*
 
-      PRODUCT TYPE
-
-    */
+    /* =========================
+       PRODUCT TYPE
+    ========================= */
 
     function getProductType(product) {
 
       return String(
-
         product.type ||
-
         product.category ||
-
         product.productType ||
-
         product.kind ||
-
         ""
-
       ).trim().toLowerCase();
 
     }
 
-    /*
 
-      COLLECTION IDENTIFICATION
-
-    */
+    /* =========================
+       COLLECTION IDENTIFICATION
+    ========================= */
 
     function getCollection(product) {
 
       const type = getProductType(product);
 
       if (
-
         type.includes("spray") ||
-
         type.includes("eau de")
-
       ) {
-
         return "spray";
-
       }
 
       if (
-
         type.includes("oil") ||
-
         type.includes("roll") ||
-
         type.includes("attar")
-
       ) {
-
         return "oil";
-
       }
 
       return "unknown";
 
     }
 
-    /*
 
-      GET PRODUCT SIZES
-
-      Supports:
-
-      - sizes
-
-      - variants
-
-      - prices
-
-      - sizePrices
-
-      - priceList
-
-      Array and object formats.
-
-    */
+    /* =========================
+       GET PRODUCT SIZES
+    ========================= */
 
     function getSizes(product) {
 
       const raw =
-
         product.sizes ||
-
         product.variants ||
-
         product.prices ||
-
         product.sizePrices ||
-
         product.priceList ||
-
         [];
 
       if (Array.isArray(raw)) {
-
         return raw;
-
       }
 
       if (
-
         raw &&
-
         typeof raw === "object"
-
       ) {
 
         return Object.entries(raw).map(
-
           ([size, price]) => ({
-
             size,
-
             price
-
           })
-
         );
 
       }
@@ -1626,181 +1030,115 @@
 
     }
 
-    /*
 
-      NORMALIZE SIZE
-
-      Examples:
-
-      6
-
-      "6"
-
-      "6 ml"
-
-      "3.5ml"
-
-    */
+    /* =========================
+       NORMALIZE SIZE
+    ========================= */
 
     function normalizeSize(value) {
 
       if (
-
         value === undefined ||
-
         value === null
-
       ) {
-
         return null;
-
       }
 
       const match = String(value).match(/[\d.]+/);
 
       if (!match) {
-
         return null;
-
       }
 
       const number = Number(match[0]);
 
       return Number.isFinite(number)
-
         ? number
-
         : null;
 
     }
 
-    /*
 
-      GET SIZE VALUE
-
-    */
+    /* =========================
+       GET SIZE VALUE
+    ========================= */
 
     function getSizeValue(item) {
 
       if (
-
         typeof item === "string" ||
-
         typeof item === "number"
-
       ) {
-
         return normalizeSize(item);
-
       }
 
       if (
-
         !item ||
-
         typeof item !== "object"
-
       ) {
-
         return null;
-
       }
 
       return normalizeSize(
-
         item.sizeLabel ??
-
         item.size ??
-
         item.volume ??
-
         item.quantity ??
-
         item.ml
-
       );
 
     }
 
-    /*
 
-      GET PRICE VALUE
-
-    */
+    /* =========================
+       GET PRICE VALUE
+    ========================= */
 
     function getPrice(item) {
 
       if (
-
         typeof item === "number" ||
-
         typeof item === "string"
-
       ) {
 
         return Number.isFinite(Number(item))
-
           ? Number(item)
-
           : null;
 
       }
 
       if (
-
         !item ||
-
         typeof item !== "object"
-
       ) {
-
         return null;
-
       }
 
       const value =
-
         item.price ??
-
         item.sellingPrice ??
-
         item.salePrice ??
-
         item.amount ??
-
         item.unitPrice;
 
       if (
-
         value === undefined ||
-
         value === null ||
-
         value === ""
-
       ) {
-
         return null;
-
       }
 
       return Number.isFinite(Number(value))
-
         ? Number(value)
-
         : null;
 
     }
 
-    /*
 
-      FIND PRICE BY SIZE
-
-      Never applies one general price
-
-      to every size.
-
-    */
+    /* =========================
+       FIND PRICE BY SIZE
+    ========================= */
 
     function getPriceForSize(product, requestedSize) {
 
@@ -1813,372 +1151,319 @@
       });
 
       if (!matchingItem) {
-
         return null;
-
       }
 
       return getPrice(matchingItem);
 
     }
 
-    /*
 
-      FORMAT PRICE
-
-    */
+    /* =========================
+       FORMAT PRICE
+    ========================= */
 
     function formatPrice(price) {
 
       if (
-
         price === null ||
-
         price === undefined
-
       ) {
-
         return null;
-
       }
 
       return "৳" + Number(price).toLocaleString("en-BD", {
-
         maximumFractionDigits: 2
-
       });
 
     }
 
-    /*
 
-      HTML ESCAPE
-
-    */
+    /* =========================
+       HTML ESCAPE
+    ========================= */
 
     function escapeHTML(value) {
 
       return String(value ?? "").replace(
-
         /[&<>"']/g,
 
         char => ({
-
           "&": "&amp;",
-
           "<": "&lt;",
-
           ">": "&gt;",
-
           '"': "&quot;",
-
           "'": "&#039;"
-
         })[char]
 
       );
 
     }
 
-    /*
 
-      NORMALIZE API RESPONSE
-
-    */
+    /* =========================
+       NORMALIZE API RESPONSE
+    ========================= */
 
     function extractProducts(response) {
 
       if (Array.isArray(response)) {
-
         return response;
-
       }
 
       if (Array.isArray(response.products)) {
-
         return response.products;
-
       }
 
       if (Array.isArray(response.data)) {
-
         return response.data;
-
       }
 
       if (
-
         response.data &&
-
         Array.isArray(response.data.products)
-
       ) {
-
         return response.data.products;
-
       }
 
       if (
-
         response.result &&
-
         Array.isArray(response.result.products)
-
       ) {
-
         return response.result.products;
-
       }
 
       throw new Error(
-
         "API response does not contain a recognizable products array."
-
       );
 
     }
 
-    /*
 
-      CREATE PRICE TABLE ROW
+    /* =========================
+       CREATE SIZE PRICE
+    ========================= */
 
-    */
+    function createSizePrice(product, size) {
 
-    function createTableRow(product, sizes) {
+      const price = getPriceForSize(product, size);
+
+      const formattedPrice = formatPrice(price);
+
+      // Do not show sizes that have no price.
+      if (!formattedPrice) {
+        return "";
+      }
+
+      return `
+        <div class="size-price">
+
+          <span class="size-label">
+            ${size} ml
+          </span>
+
+          <span class="size-value">
+            ${formattedPrice}
+          </span>
+
+        </div>
+      `;
+
+    }
+
+
+    /* =========================
+       CREATE PRODUCT ENTRY
+    ========================= */
+
+    function createPriceItem(product, sizes, collectionName) {
 
       const productName = getProductName(product);
 
-      const cells = sizes.map(size => {
+      const availableSizes = sizes
+        .map(size => createSizePrice(product, size))
+        .filter(Boolean)
+        .join("");
 
-        const price = getPriceForSize(
-
-          product,
-
-          size
-
-        );
-
-        const formattedPrice = formatPrice(price);
-
-        return `
-
-          <td class="${formattedPrice ? "price-value" : "unavailable"}">
-
-            ${formattedPrice || "—"}
-
-          </td>
-
-        `;
-
-      }).join("");
+      // Hide products with no matching size-specific prices.
+      if (!availableSizes) {
+        return "";
+      }
 
       return `
 
-        <tr>
+        <article class="price-item">
 
-          <td class="product-name">
+          <div class="product-info">
 
-            ${escapeHTML(productName)}
+            <h3 class="product-name">
+              ${escapeHTML(productName)}
+            </h3>
 
-          </td>
+            <p class="product-type">
+              ${collectionName}
+            </p>
 
-          ${cells}
+          </div>
 
-        </tr>
+          <div class="size-prices">
+
+            ${availableSizes}
+
+          </div>
+
+        </article>
 
       `;
 
     }
 
-    /*
 
-      RENDER COLLECTIONS
-
-    */
+    /* =========================
+       RENDER PRICE LIST
+    ========================= */
 
     function renderProducts() {
 
       const searchTerm = searchInput.value
-
         .trim()
-
         .toLowerCase();
 
       const filteredProducts = allProducts.filter(product => {
 
-        const name = getProductName(product).toLowerCase();
+        const name = String(getProductName(product))
+          .toLowerCase();
 
         const collection = getCollection(product);
 
         const matchesSearch = name.includes(searchTerm);
 
         const matchesFilter =
-
           currentFilter === "all" ||
-
           currentFilter === collection;
 
         return (
-
           matchesSearch &&
-
           matchesFilter &&
-
           collection !== "unknown"
-
         );
 
       });
 
-      /*
 
-        SPRAY PRODUCTS
-
-      */
+      /* SPRAY PRODUCTS */
 
       const sprayProducts = filteredProducts.filter(
-
         product => getCollection(product) === "spray"
-
       );
 
-      /*
 
-        OIL PRODUCTS
-
-      */
+      /* OIL PRODUCTS */
 
       const oilProducts = filteredProducts.filter(
-
         product => getCollection(product) === "oil"
-
       );
 
-      /*
 
-        SPRAY TABLE
+      /* RENDER SPRAY LIST */
 
-      */
+      const sprayHTML = sprayProducts
+        .map(product => {
 
-      sprayTable.innerHTML = sprayProducts.length
+          return createPriceItem(
+            product,
+            SPRAY_SIZES,
+            "Perfume Spray"
+          );
 
-        ? sprayProducts.map(product => {
+        })
+        .filter(Boolean)
+        .join("");
 
-            return createTableRow(
+      sprayList.innerHTML = sprayHTML || `
+        <div class="empty">
+          No spray prices available.
+        </div>
+      `;
 
-              product,
 
-              SPRAY_SIZES
+      /* RENDER OIL LIST */
 
-            );
+      const oilHTML = oilProducts
+        .map(product => {
 
-          }).join("")
+          return createPriceItem(
+            product,
+            OIL_SIZES,
+            "Perfume Oil"
+          );
 
-        : `
+        })
+        .filter(Boolean)
+        .join("");
 
-          <tr>
+      oilList.innerHTML = oilHTML || `
+        <div class="empty">
+          No perfume oil prices available.
+        </div>
+      `;
 
-            <td colspan="6" class="empty">
 
-              No spray products found.
+      /* UPDATE COUNTS */
 
-            </td>
+      const sprayVisible = sprayHTML ? 
+        sprayProducts.filter(p =>
+          SPRAY_SIZES.some(size =>
+            getPriceForSize(p, size) !== null
+          )
+        ).length : 0;
 
-          </tr>
-
-        `;
-
-      /*
-
-        OIL TABLE
-
-      */
-
-      oilTable.innerHTML = oilProducts.length
-
-        ? oilProducts.map(product => {
-
-            return createTableRow(
-
-              product,
-
-              OIL_SIZES
-
-            );
-
-          }).join("")
-
-        : `
-
-          <tr>
-
-            <td colspan="5" class="empty">
-
-              No perfume oil products found.
-
-            </td>
-
-          </tr>
-
-        `;
-
-      /*
-
-        UPDATE COUNTS
-
-      */
+      const oilVisible = oilHTML ?
+        oilProducts.filter(p =>
+          OIL_SIZES.some(size =>
+            getPriceForSize(p, size) !== null
+          )
+        ).length : 0;
 
       document.getElementById("sprayCount").textContent =
-
-        sprayProducts.length + " products";
+        sprayVisible + " products";
 
       document.getElementById("oilCount").textContent =
+        oilVisible + " products";
 
-        oilProducts.length + " products";
 
-      /*
+      /* COLLECTION VISIBILITY */
 
-        FILTER COLLECTION VISIBILITY
+      document.getElementById("spraySection")
+        .classList.toggle(
+          "hidden",
+          currentFilter === "oil"
+        );
 
-      */
+      document.getElementById("oilSection")
+        .classList.toggle(
+          "hidden",
+          currentFilter === "spray"
+        );
 
-      document.getElementById("spraySection").classList.toggle(
 
-        "hidden",
+      /* EMPTY SEARCH RESULT */
 
-        currentFilter === "oil"
+      const hasVisibleProducts =
+        sprayVisible > 0 || oilVisible > 0;
 
-      );
-
-      document.getElementById("oilSection").classList.toggle(
-
-        "hidden",
-
-        currentFilter === "spray"
-
-      );
-
-      /*
-
-        EMPTY SEARCH RESULT
-
-      */
-
-      document.getElementById("emptyMessage").classList.toggle(
-
-        "hidden",
-
-        filteredProducts.length > 0
-
-      );
+      document.getElementById("emptyMessage")
+        .classList.toggle(
+          "hidden",
+          hasVisibleProducts
+        );
 
     }
 
-    /*
 
-      FETCH PRODUCTS FROM BACKEND
-
-    */
+    /* =========================
+       FETCH PRODUCTS
+    ========================= */
 
     async function fetchProducts() {
 
@@ -2195,9 +1480,7 @@
           method: "GET",
 
           headers: {
-
             Accept: "application/json"
-
           },
 
           cache: "no-store"
@@ -2207,9 +1490,7 @@
         if (!response.ok) {
 
           throw new Error(
-
             "API request failed with status " + response.status
-
           );
 
         }
@@ -2227,11 +1508,8 @@
       } catch (error) {
 
         console.error(
-
           "Product loading error:",
-
           error
-
         );
 
         loading.classList.add("hidden");
@@ -2241,23 +1519,16 @@
         errorBox.innerHTML = `
 
           <strong>
-
-            Unable to load perfume collection.
-
+            Unable to load LUXE price list.
           </strong>
 
           <p style="margin-top:8px">
-
             ${escapeHTML(error.message)}
-
           </p>
 
           <p style="margin-top:8px">
-
             Please check the API URL, backend status,
-
             CORS configuration and product endpoint.
-
           </p>
 
         `;
@@ -2266,84 +1537,67 @@
 
     }
 
-    /*
 
-      SEARCH
-
-    */
+    /* =========================
+       SEARCH
+    ========================= */
 
     searchInput.addEventListener(
-
       "input",
-
       renderProducts
-
     );
 
-    /*
 
-      COLLECTION FILTERS
+    /* =========================
+       COLLECTION FILTERS
+    ========================= */
 
-    */
+    document.querySelectorAll(".filter-btn")
+      .forEach(button => {
 
-    document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", () => {
 
-      button.addEventListener("click", () => {
+          document.querySelectorAll(".filter-btn")
+            .forEach(btn => {
+              btn.classList.remove("active");
+            });
 
-        document.querySelectorAll(".filter-btn").forEach(btn => {
+          button.classList.add("active");
 
-          btn.classList.remove("active");
+          currentFilter = button.dataset.filter;
+
+          renderProducts();
 
         });
 
-        button.classList.add("active");
-
-        currentFilter = button.dataset.filter;
-
-        renderProducts();
-
       });
 
-    });
 
-    /*
+    /* =========================
+       REFRESH
+    ========================= */
 
-      REFRESH
+    document.getElementById("refreshBtn")
+      .addEventListener("click", fetchProducts);
 
-    */
 
-    document.getElementById("refreshBtn").addEventListener(
+    /* =========================
+       PRINT
+    ========================= */
 
-      "click",
+    document.getElementById("printBtn")
+      .addEventListener("click", () => {
+        window.print();
+      });
 
-      fetchProducts
 
-    );
-
-    /*
-
-      PRINT
-
-    */
-
-    document.getElementById("printBtn").addEventListener(
-
-      "click",
-
-      () => window.print()
-
-    );
-
-    /*
-
-      INITIAL LOAD
-
-    */
+    /* =========================
+       INITIAL LOAD
+    ========================= */
 
     fetchProducts();
 
   </script>
 
 </body>
-
 </html>
